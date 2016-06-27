@@ -18,27 +18,22 @@ namespace PPS337001
 
         static int SomaImpar(int[] vetor, int n)
         {
-            //Mostra os valores guardados no vetor
-            if(vetor[n] %2 != 0)
+            if (n < 0)  /* se já percorreu todo o vetor */
             {
-                Console.WriteLine("valor =" + vetor[n]);
-            }            
-
-            if (n > 0 && vetor[n] % 2 != 0)
+                return 0;  /* retorna zero */
+            }                
+            else  /* senão */
             {
-                return vetor[n] + SomaImpar(vetor, n- 1);
+                if (vetor[n] % 2 != 0)  /* se vetor[n] é impar */
+                {
+                    Console.WriteLine("v = " + vetor[n]);
+                    return vetor[n] + SomaImpar(vetor, n - 1); /* retorna a soma de vetor[n] à soma dos ímpares do restante do vetor */
+                }
+                else /* senão */
+                {                    
+                    return SomaImpar(vetor, n - 1); /* retorna a soma par dos ímpares do restante do vetor */
+                }   
             }
-            else if (n == 0 )
-            {
-                return vetor[n];
-            }
-            else if (n > 0 && vetor[n] % 2 == 0)
-            {
-                return SomaImpar(vetor,n - 1);
-            }
-
-            return 0;
-
         }
     }
 }
